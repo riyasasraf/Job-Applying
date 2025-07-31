@@ -157,94 +157,96 @@ const ResumeBuilder = () => {
   };
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <div className="flex space-x-4 h-full">
-        {" "}
-        {/* Use h-full to make it take up available space */}
-        {/* Available Sections Sidebar */}
-        <div className="w-64 bg-white p-4 rounded-lg shadow-lg flex-shrink-0 overflow-y-auto">
-          <h3 className="text-lg font-semibold mb-4">Available Sections</h3>
-          <Droppable droppableId="available-sections">
-            {(provided) => (
-              <div
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-                className="space-y-2"
-              >
-                {available.map((section, index) => (
-                  <Draggable
-                    key={section.id}
-                    draggableId={section.id}
-                    index={index}
-                  >
-                    {(provided) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        className="p-3 bg-gray-50 border border-gray-200 rounded-md text-sm cursor-grab hover:bg-gray-100 transition-colors"
-                      >
-                        {section.title}
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </div>
-        {/* Main Resume Canvas */}
-        <div className="flex-1 bg-white p-6 rounded-lg shadow-lg overflow-y-auto">
-          <h2 className="text-2xl font-bold mb-6 text-center">Your Resume</h2>
-          <Droppable droppableId="active-sections">
-            {(provided) => (
-              <div
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-                className="space-y-8" // Add spacing between sections
-              >
-                {sections.map((section, index) => (
-                  <Draggable
-                    key={section.id}
-                    draggableId={section.id}
-                    index={index}
-                  >
-                    {(provided) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        className="bg-gray-50 border border-gray-200 rounded-lg p-4 relative"
-                      >
+    <div className="w-full">
+      <DragDropContext onDragEnd={onDragEnd}>
+        <div className="flex space-x-4 h-full w-full">
+          {" "}
+          {/* Use h-full to make it take up available space */}
+          {/* Available Sections Sidebar */}
+          <div className="w-52 bg-white p-4 rounded-lg shadow-lg flex-shrink-0 overflow-y-auto">
+            <h3 className="text-lg font-semibold mb-4">Available Sections</h3>
+            <Droppable droppableId="available-sections">
+              {(provided) => (
+                <div
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  className="space-y-2"
+                >
+                  {available.map((section, index) => (
+                    <Draggable
+                      key={section.id}
+                      draggableId={section.id}
+                      index={index}
+                    >
+                      {(provided) => (
                         <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
                           {...provided.dragHandleProps}
-                          className="absolute top-2 right-2 cursor-grab text-gray-400 hover:text-gray-600"
+                          className="p-3 bg-gray-50 border border-gray-200 rounded-md text-sm cursor-grab hover:bg-gray-100 transition-colors"
                         >
-                          {/* Drag handle icon (e.g., three dots or bars) */}
-                          &#x22EE; {/* Vertical ellipsis for drag handle */}
+                          {section.title}
                         </div>
-                        <button
-                          onClick={() => removeSection(section.id)}
-                          className="absolute top-2 left-2 text-red-500 hover:text-red-700 text-sm"
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </div>
+          {/* Main Resume Canvas */}
+          <div className="flex-1 bg-white p-6 rounded-lg shadow-lg overflow-y-auto">
+            <h2 className="text-2xl font-bold mb-6 text-center">Your Resume</h2>
+            <Droppable droppableId="active-sections">
+              {(provided) => (
+                <div
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  className="space-y-8" // Add spacing between sections
+                >
+                  {sections.map((section, index) => (
+                    <Draggable
+                      key={section.id}
+                      draggableId={section.id}
+                      index={index}
+                    >
+                      {(provided) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          className="bg-gray-50 border border-gray-200 rounded-lg p-4 relative"
                         >
-                          &times; {/* Close/remove button */}
-                        </button>
-                        <SectionRenderer
-                          section={section}
-                          onContentChange={handleSectionContentChange}
-                          onListChange={handleSectionListChange}
-                          onTitleChange={handleSectionTitleChange}
-                        />
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
+                          <div
+                            {...provided.dragHandleProps}
+                            className="absolute top-2 right-2 cursor-grab text-gray-400 hover:text-gray-600"
+                          >
+                            {/* Drag handle icon (e.g., three dots or bars) */}
+                            &#x22EE; {/* Vertical ellipsis for drag handle */}
+                          </div>
+                          <button
+                            onClick={() => removeSection(section.id)}
+                            className="absolute top-2 right-2 text-red-500 hover:text-red-700 text-sm"
+                          >
+                            &times; {/* Close/remove button */}
+                          </button>
+                          <SectionRenderer
+                            section={section}
+                            onContentChange={handleSectionContentChange}
+                            onListChange={handleSectionListChange}
+                            onTitleChange={handleSectionTitleChange}
+                          />
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </div>
         </div>
-      </div>
+      </DragDropContext>
       <div className="mt-6 flex items-center justify-end gap-x-6 p-4">
         <button
           type="button"
@@ -271,10 +273,10 @@ const ResumeBuilder = () => {
             // .catch(error => console.error('Error generating resume:', error));
           }}
         >
-          Generate Resume (Backend)
+          Generate Resume
         </button>
       </div>
-    </DragDropContext>
+    </div>
   );
 };
 
