@@ -37,9 +37,11 @@ function AppliedJobs() {
       <Table>
         <TableHead>
           <TableRow className="bg-gray-100">
-            <TableCell className="font-bold text-sm">Name</TableCell>
-            <TableCell className="font-bold text-sm">Email</TableCell>
-            <TableCell className="font-bold text-sm">Role</TableCell>
+            <TableCell className="font-bold text-sm">Company Name</TableCell>
+            <TableCell className="font-bold text-sm">Job Title</TableCell>
+            <TableCell className="font-bold text-sm">Applied Date</TableCell>
+            <TableCell className="font-bold text-sm">Job Source</TableCell>
+            <TableCell className="font-bold text-sm">Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -48,6 +50,8 @@ function AppliedJobs() {
               <TableCell className="font-medium">{user.name}</TableCell>
               <TableCell>{user.email}</TableCell>
               <TableCell className="text-zinc-500">{user.access}</TableCell>
+              <TableCell className="text-zinc-500">{user.access}</TableCell>
+              <TableCell className="text-zinc-500"> <input type="radio"/></TableCell>
             </TableRow>
           ))}
         </TableBody>

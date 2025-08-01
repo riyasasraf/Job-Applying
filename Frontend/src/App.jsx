@@ -6,14 +6,23 @@ import Profile from "./Components/SettingsPage/ProfileSettings/Profile"; // Path
 import AppliedJobs from "./Components/SettingsPage/AppliedJobsList/AppliedJobs"; // Path to your AppliedJobs component
 import ResumeBuilder from "./Components/SettingsPage/ResumeFormatter/ResumeBuilder"; // Path to your ResumeBuilder component
 import { Route, Routes, Navigate } from "react-router-dom"; // Import Navigate
+import Signup from "./Components/Pages/Signup";
+import Login from "./Components/Pages/Login";
 
 const App = () => {
+
+   const issignupOrLogin = ["signup", "login"].some((route) =>
+     location.pathname.includes(route)
+   );
   return (
     <>
       <div className="flex flex-col h-screen">
-        <Navbar />
+        {!issignupOrLogin && <Navbar />}
         <Routes>
           <Route path="/" element={<ListView />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="login" element={<Login />} />
+
           <Route path="/dashboard" element={<DashBoard />}>
             <Route index element={<Navigate to="profile" replace />} />
             <Route path="profile" element={<Profile />} />

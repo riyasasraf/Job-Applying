@@ -5,18 +5,18 @@ import {
   ChevronDownIcon,
   CurrencyDollarIcon,
   UserIcon,
-  ArrowLeftEndOnRectangleIcon
+  ArrowLeftEndOnRectangleIcon,
 } from "@heroicons/react/20/solid";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 export default function Navbar() {
-
   const location = useLocation();
-  
-  const isDashboard = location.pathname.includes("dashboard");
-  
+
+  const issignupOrLogin = ["signup", "login", "dashboard"].some((route) =>
+    location.pathname.includes(route)
+  );
 
   return (
     <div className="lg:flex lg:items-center lg:justify-between px-6 py-3">
@@ -29,7 +29,7 @@ export default function Navbar() {
       </div>
       <div className="mt-5 flex lg:mt-0 lg:ml-4">
         {/* Dropdown */}
-        {!isDashboard && (
+        {!issignupOrLogin && (
           <Menu as="div" className="relative ml-3">
             <MenuButton className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
               <UserIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5" />
@@ -65,5 +65,5 @@ export default function Navbar() {
         )}
       </div>
     </div>
-  );  
+  );
 }
