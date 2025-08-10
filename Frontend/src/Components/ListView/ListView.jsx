@@ -13,7 +13,7 @@ import ContactCardGrid from "./ContactCardGrid";
 
 
 
-export const ListView = () => {
+export const ListView = ({jobData}) => {
   return (
     <div className="min-h-screen bg-gray-100 p-4 flex justify-center items-center font-inter">
       <div className="w-full ">
@@ -29,7 +29,7 @@ export const ListView = () => {
               xl: "repeat(5, minmax(0, 1fr))", // 3 columns on medium screens
             },
             padding: "1rem", // Tailwind's p-4
-            
+
             "&::-webkit-scrollbar": {
               width: "8px",
             },
@@ -46,7 +46,8 @@ export const ListView = () => {
             },
           }}
         >
-          <ContactCardGrid />
+          {}
+          <ContactCardGrid jobData={jobData} />
         </Box>
       </div>
     </div>

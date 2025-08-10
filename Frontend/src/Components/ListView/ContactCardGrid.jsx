@@ -10,12 +10,12 @@ import {
 } from "@mui/material";
 import { MailOutline, Phone } from "@mui/icons-material";
 import { CheckCircleOutline, CancelOutlined } from "@mui/icons-material";
-import { users  } from './Listdata';
 
-const ContactCardGrid = () => {
-  return users.map((user) => (
+
+const ContactCardGrid = ({ jobData }) => {
+  return jobData.map((job) => (
     <Card
-      key={user.id}
+      key={job.id}
       sx={{
         borderRadius: "0.5rem", // Tailwind's rounded-lg
         boxShadow:
@@ -51,7 +51,7 @@ const ContactCardGrid = () => {
               component="div"
               sx={{ fontWeight: "semibold", color: "#1F2937" }}
             >
-              {user.company}
+              {job.company}
             </Typography>
             <Typography
               variant="caption"
@@ -66,12 +66,12 @@ const ContactCardGrid = () => {
                 fontSize: "0.75rem", // Tailwind's text-xs
               }}
             >
-              {user.company}
+              {job.company}
             </Typography>
           </Box>
           <Avatar
-            alt={`${user.title}'s avatar`}
-            src={user.logo}
+            alt={`${job.title}'s avatar`}
+            src={job.logo}
             sx={{
               width: 48,
               height: 48,
@@ -89,7 +89,7 @@ const ContactCardGrid = () => {
             marginBottom: "1rem",
           }}
         >
-          {user.title}
+          {job.title}
         </Typography>
         <Box
           sx={{
@@ -140,6 +140,6 @@ const ContactCardGrid = () => {
       </CardContent>
     </Card>
   ));
-}
+};
 
 export default ContactCardGrid

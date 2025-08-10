@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Extractor</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body class="p-4 w-64">
+    <h1 class="text-xl font-bold mb-4">Extract Job Info</h1>
+    <button id="extractButton" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md">
+        Extract Job Details
+    </button>
+    <div id="status" class="mt-4 text-sm text-gray-700"></div>
+    <textarea id="jobDetailsOutput" class="w-full h-32 mt-4 p-2 border rounded-md text-sm" readonly></textarea>
+    <button id="copyButton" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md mt-2 hidden">
+        Copy to Clipboard
+    </button>
+    <script src="popup.js"></script>
+</body>
+</html>
