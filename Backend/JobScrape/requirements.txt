@@ -20,3 +20,5 @@ anyio
 
 # Enable CORS (cross-origin requests)
 fastapi[all]
+psycopg2-binary
+
