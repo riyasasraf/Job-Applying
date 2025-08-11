@@ -7,7 +7,6 @@ import PhotoUploadSection from "./PhotoUploadSection";
 import SkillsSection from "./SkillsSection";
 import WorkExperienceSection from "./WorkExperienceSection";
 import ProjectsSection from "./ProjectsSection";
-import Stepper from "./Stepper";
 
 export default function Profile() {
   // Master state for all profile data
@@ -286,16 +285,10 @@ export default function Profile() {
     },
   ];
   const currentPageData = formPages[currentPage];
-const steps = formPages.map((page, index) => ({
-  number: index + 1,
-  name: page.name,
-}));
-
 
   return (
     <form onSubmit={handleSubmit}>
-      <Stepper steps={steps} currentStep={currentPage + 1} />
-      <div className="space-y-12 py-4">
+      <div className="space-y-12">
         <div>
           <h2 className="text-2xl font-bold leading-7 text-gray-900">
             {currentPageData.name}

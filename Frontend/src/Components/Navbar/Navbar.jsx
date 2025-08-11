@@ -1,52 +1,33 @@
-import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import {
+  BriefcaseIcon,
+  CalendarIcon,
+  CheckIcon,
+  ChevronDownIcon,
+  CurrencyDollarIcon,
+  UserIcon,
   ArrowLeftEndOnRectangleIcon,
-  MagnifyingGlassIcon,
-  UserIcon
 } from "@heroicons/react/20/solid";
-import { useState } from "react"; // Import useState
-import { Link, useLocation } from "react-router-dom";
-import { getJobdetails } from "../../api/jobApi";
-import JobPreferenceModal from "../JobPreferenceModal/JobPreferenceModal"; // Import the new modal component
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-export default function Navbar({ setJobdata }) {
+export default function Navbar() {
   const location = useLocation();
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
 
   const issignupOrLogin = ["signup", "login", "dashboard"].some((route) =>
     location.pathname.includes(route)
   );
 
-  const handleSearch = async (preferences) => {
-    try {
-      const jobResults = await getJobdetails(preferences);
-      console.log("Jobs:", jobResults);
-      setJobdata(jobResults);
-    } catch (error) {
-      alert("Failed to fetch job listings", error);
-    }
-  };
-
   return (
-    <div className="lg:flex lg:items-center lg:justify-between px-6 py-3 border-b border-gray-200">
+    <div className="lg:flex lg:items-center lg:justify-between px-6 py-3">
       <div className="min-w-0 flex-1">
-        <h2 className="text-2xl/7 font-bold text-gray-900 sm:truncate sm:text-3xl  sm:tracking-tight">
-          <Link to="/" className="block">
-            <span className="cursor-pointer">Job Seeker</span>
-          </Link>
-        </h2>
+        <Link to="/" className="block">
+          <h2 className="text-2xl/7 font-bold text-gray-900 sm:truncate sm:text-3xl cursor-pointer sm:tracking-tight">
+            Job Seeker
+          </h2>
+        </Link>
       </div>
-      <div className="mt-5 flex lg:mt-0 lg:ml-4 items-center space-x-4">
-        {" "}
-        {/* Added items-center and space-x-4 */}
-        {/* Search Bar */}
-        <div className="relative flex items-center">
-          <MagnifyingGlassIcon
-            className="absolute right-3 h-6 w-6 text-gray-400 cursor-pointer"
-            aria-hidden="true"
-            onClick={() => setIsModalOpen(true)} // Open modal on icon click
-          />
-        </div>
+      <div className="mt-5 flex lg:mt-0 lg:ml-4">
         {/* Dropdown */}
         {!issignupOrLogin && (
           <Menu as="div" className="relative ml-3">
@@ -57,25 +38,25 @@ export default function Navbar({ setJobdata }) {
 
             <MenuItems
               transition
-              className="absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+              className="absolute left-0 z-10 mt-2 -mr-1 w-24 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
             >
               <MenuItem>
-                <Link
-                  to="/dashboard"
+                <a
+                  href="/dashboard"
                   className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
                 >
-                  Dashboard
-                </Link>
+                  DashBoard
+                </a>
               </MenuItem>
               <MenuItem>
                 <a
                   href="#"
-                  className="inline-flex items-center px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden w-full"
+                  className="inline-flex items-center  px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
                 >
                   Logout
                   <ArrowLeftEndOnRectangleIcon
                     aria-hidden="true"
-                    className="ml-auto size-5" // Adjusted for better spacing
+                    className="size-5"
                   />
                 </a>
               </MenuItem>
@@ -83,13 +64,6 @@ export default function Navbar({ setJobdata }) {
           </Menu>
         )}
       </div>
-
-      {/* Job Preference Modal */}
-      <JobPreferenceModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onSearch={handleSearch}
-      />
     </div>
   );
 }
