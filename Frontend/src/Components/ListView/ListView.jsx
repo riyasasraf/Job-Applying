@@ -8,28 +8,81 @@ import {
   Box,
   List,
 } from "@mui/material";
-import { MailOutline, Phone } from "@mui/icons-material"; // Lucide React icons are not directly available for Material-UI, using Material Icons
+import { MailOutline, Phone, Description } from "@mui/icons-material";
 import ContactCardGrid from "./ContactCardGrid";
 
+export const ListView = ({ jobdata }) => {
+  // Extract jobs array from the response object
+  const message = jobdata?.message || "";
 
+  console.log("ListView - Full jobdata:", jobdata);
 
-export const ListView = () => {
+  const handleGenerateResume = () => {
+    // Add your resume generation logic here
+    console.log("Generate Resume clicked");
+    alert("Generating resume based on selected jobs...");
+  };
+
+  if (!jobdata) {
+    return (
+      <div className="min-h-screen bg-gray-100 p-4 flex justify-center items-center font-inter">
+        <div className="text-center text-gray-500 py-8">
+          <Typography variant="h6" className="mb-4">
+            No job data available
+          </Typography>
+          <Typography variant="body2">
+            Click the search icon in the navbar to paste JSON data.
+          </Typography>
+        </div>
+      </div>
+    );
+  }
+
+  if (jobdata.length === 0) {
+    return (
+      <div className="min-h-screen bg-gray-100 p-4 flex justify-center items-center font-inter">
+        <div className="text-center text-gray-500 py-8">
+          <Typography variant="h6">No jobs found</Typography>
+          {message && (
+            <Typography variant="body2" sx={{ mt: 1 }}>
+              {message}
+            </Typography>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-gray-100 p-4 flex justify-center items-center font-inter">
-      <div className="w-full ">
+    <div className="min-h-screen bg-gray-100 p-4 font-inter flex flex-col">
+      {/* Main content area */}
+      <div className="w-full flex-1">
+        {/* Header with job count and message */}
+        <Box sx={{ mb: 3, textAlign: "center" }}>
+          <Typography variant="h4" className="mb-2" sx={{ fontWeight: "bold" }}>
+            Job Listings
+          </Typography>
+          <Typography variant="body1" color="text.secondary">
+            {message ||
+              `Found ${jobdata.length} job${jobdata.length !== 1 ? "s" : ""}`}
+          </Typography>
+        </Box>
+
+        {/* Grid container */}
         <Box
           sx={{
             display: "grid",
-            gap: "1.5rem", // Tailwind's gap-4
+            gap: "1.5rem",
             gridTemplateColumns: {
-              xs: "repeat(1, minmax(0, 1fr))", // 1 column on extra small screens
-              sm: "repeat(2, minmax(0, 1fr))", // 2 columns on small screens
-              md: "repeat(3, minmax(0, 1fr))", // 3 columns on medium screens
-              lg: "repeat(4, minmax(0, 1fr))", // 3 columns on medium screens
-              xl: "repeat(5, minmax(0, 1fr))", // 3 columns on medium screens
+              xs: "repeat(1, minmax(0, 1fr))",
+              sm: "repeat(2, minmax(0, 1fr))",
+              md: "repeat(3, minmax(0, 1fr))",
+              lg: "repeat(4, minmax(0, 1fr))",
+              xl: "repeat(5, minmax(0, 1fr))",
             },
-            padding: "1rem", // Tailwind's p-4
-            
+            padding: "1rem",
+            maxHeight: "75vh", // Reduced to make room for button
+            overflowY: "auto",
             "&::-webkit-scrollbar": {
               width: "8px",
             },
@@ -46,9 +99,40 @@ export const ListView = () => {
             },
           }}
         >
-          <ContactCardGrid />
+          {/* Pass the jobs array to ContactCardGrid */}
+          <ContactCardGrid jobdata={jobdata} />
         </Box>
       </div>
+
+      <Button
+          variant="contained"
+          startIcon={<Description />}
+          onClick={handleGenerateResume}
+          sx={{
+            backgroundColor: "#6366F1",
+            "&:hover": {
+              backgroundColor: "#4F46E5",
+            },
+            borderRadius: "0.5rem",
+            textTransform: "none",
+            paddingX: "1.5rem",
+            paddingY: "0.75rem",
+            fontSize: "0.875rem",
+            fontWeight: "600",
+            boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+            // eslint-disable-next-line no-dupe-keys
+            "&:hover": {
+              boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+              transform: "translateY(-1px)",
+            },
+            position: "fixed",
+            bottom: "35px",
+            right:"50px",
+            transition: "all 0.2s ease-in-out",
+          }}
+        >
+          Generate Resume
+        </Button>
     </div>
   );
 };

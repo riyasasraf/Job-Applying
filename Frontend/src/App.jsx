@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ListView from "./Components/ListView/ListView";
 import Navbar from "./Components/Navbar/Navbar";
 import DashBoard from "./Components/SettingsPage/DashBoard"; // Path to your Dashboard component
@@ -11,15 +11,18 @@ import Login from "./Components/Pages/Login";
 
 const App = () => {
 
+  const [jobdata, setJobData] = useState();
+
    const issignupOrLogin = ["signup", "login"].some((route) =>
      location.pathname.includes(route)
-   );
+  );
+  
   return (
     <>
       <div className="flex flex-col h-screen">
-        {!issignupOrLogin && <Navbar />}
+        {!issignupOrLogin && <Navbar setJobData={setJobData} />}
         <Routes>
-          <Route path="/" element={<ListView />} />
+          <Route path="/" element={<ListView jobdata={ jobdata} />} />
           <Route path="signup" element={<Signup />} />
           <Route path="login" element={<Login />} />
 

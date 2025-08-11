@@ -1,25 +1,54 @@
-import {
-  BriefcaseIcon,
-  CalendarIcon,
-  CheckIcon,
-  ChevronDownIcon,
-  CurrencyDollarIcon,
-  UserIcon,
-  ArrowLeftEndOnRectangleIcon,
-} from "@heroicons/react/20/solid";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import {
+  ArrowLeftEndOnRectangleIcon,
+  MagnifyingGlassIcon,
+  UserIcon
+} from "@heroicons/react/20/solid";
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import JsonPasteModal from "../Pages/JsonPasteModal"; // We'll create this component
+import { sendJobData } from "../../apis/Jobscrap/jobapis";
 
-export default function Navbar() {
+export default function Navbar({ setJobData }) {
   const location = useLocation();
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const issignupOrLogin = ["signup", "login", "dashboard"].some((route) =>
     location.pathname.includes(route)
   );
 
+  const handleClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+const handleJsonSubmit = async (jsonData) => {
+  console.log("Received JSON data:", jsonData);
+
+  try {
+    setIsLoading(true);
+    // Send data to API
+    const apiResponse = await sendJobData(jsonData);
+    // Update local state
+    setJobData(apiResponse);
+    // Show success message
+    alert(`Successfully sent ${jsonData.length} jobs to API!`);
+  } catch (error) {
+    console.error("Failed to send job data:", error);
+    alert("Failed to send job data to API. Please try again.");
+    // Still update local state even if API fails
+    setJobData(jsonData);
+  } finally {
+    setIsLoading(false);
+    setIsModalOpen(false);
+  }
+};
+
   return (
-    <div className="lg:flex lg:items-center lg:justify-between px-6 py-3">
+    <div className="lg:flex lg:items-center lg:justify-between px-6 py-3 ">
       <div className="min-w-0 flex-1">
         <Link to="/" className="block">
           <h2 className="text-2xl/7 font-bold text-gray-900 sm:truncate sm:text-3xl cursor-pointer sm:tracking-tight">
@@ -27,6 +56,18 @@ export default function Navbar() {
           </h2>
         </Link>
       </div>
+
+      <div className="h-5 w-5 cursor-pointer" onClick={handleClick}>
+        <MagnifyingGlassIcon
+          className={`h-6 w-6 ${
+            isLoading ? "text-blue-400" : "text-gray-400 hover:text-gray-600"
+          }`}
+        />
+        {isLoading && (
+          <span className="ml-2 text-sm text-blue-600">Sending...</span>
+        )}
+      </div>
+
       <div className="mt-5 flex lg:mt-0 lg:ml-4">
         {/* Dropdown */}
         {!issignupOrLogin && (
@@ -64,6 +105,13 @@ export default function Navbar() {
           </Menu>
         )}
       </div>
+
+      {/* JSON Paste Modal */}
+      <JsonPasteModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onSubmit={handleJsonSubmit}
+      />
     </div>
   );
 }
