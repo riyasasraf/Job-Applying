@@ -77,8 +77,9 @@ def extract_all_job_details(job_links):
         html = fetch_job_html(link)
         if html:
             job_details = extract_job_details(html, link)
+            print (job_details)
             all_jobs_data.append(job_details)
 
-        time.sleep(random.uniform(2, 5))  # Avoid detection
+        # time.sleep(random.uniform(2, 5))  # Avoid detection
 
     return all_jobs_data

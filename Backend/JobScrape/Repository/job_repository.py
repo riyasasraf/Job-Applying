@@ -14,7 +14,7 @@ class JobRepository:
     def init_db(self):
         with self.conn.cursor() as cur:
             cur.execute("""
-                CREATE TABLE IF NOT EXISTS jobs (
+                CREATE TABLE IF NOT EXISTS job (
                     id SERIAL PRIMARY KEY,
                     job_id TEXT UNIQUE,
                     job_title TEXT,
@@ -32,7 +32,7 @@ class JobRepository:
         with self.conn.cursor() as cur:
             for job in jobs:
                 cur.execute("""
-                    INSERT INTO jobs (job_id, job_title, company_name, location, description, url, logo, date_posted)
+                    INSERT INTO job (job_id, job_title, company_name, location, description, url, logo, date_posted)
                     VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
                     ON CONFLICT (job_id) DO UPDATE SET
                         job_title = EXCLUDED.job_title,

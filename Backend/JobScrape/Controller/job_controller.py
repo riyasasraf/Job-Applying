@@ -11,7 +11,6 @@ def receive_jobs():
         scraped_jobs = job_service.process_jobs(raw_data)
         return jsonify({
             "message": f"Extracted and saved details for {len(scraped_jobs)} jobs",
-            "jobs": scraped_jobs
         }), 200
     except ValueError as ve:
         return jsonify({"error": str(ve)}), 400
