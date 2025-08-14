@@ -1,0 +1,95 @@
+meta {
+  name: generate Resumes
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8081/api/v1/resume
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "about": "",
+      "personalInfo": {
+          "firstName": "Mohamed Riyas",
+          "lastName": "A",
+          "email": "riyassucces@gmail.com",
+          "phone": "+91 7339623092",
+          "linkedin": "https://www.linkedin.com/in/mohamedriyasasrafali/",
+          "portfolio": "https://riyasasraf.netlify.app/",
+          "country": "India",
+          "streetAddress": "42/II MANICKAVASAGAR ST NO 2",
+          "city": "Salem",
+          "region": "Tamil Nadu",
+          "postalCode": "636003"
+      },
+      "workExperience": [
+          {
+              "id": 1755066480218,
+              "title": "",
+              "company": "",
+              "startDate": "2024-10",
+              "endDate": "2025-10",
+              "description": "",
+              "jobTitle": "Software Developer",
+              "companyName": "BORNFIRE INNOVATIONS PVT. LTD",
+              "achievements": "• Developed and integrated the KYmodule into the BOB Dubai banking\nplatform, improving customer onboarding efficiency by 20%.\n• Contributed to 8+ modules including BTM, BGLS, and Merchant QR,reducing\nissue resolution time by 20% through proactive debugging and optimization.\n• Managed deployment of 10+ applications across Linux and Windows servers,\nensuring 99.9% uptime and smooth rollouts using automated scripts.\n• Administered Oracle 19c databases (with 800K+ records) for all active\nprojects.\n• Supported 10+ LAN-connected systems and maintained network\ninfrastructure.\n• As a Trainee Developed backend modules using the Spring Framework.\n• Generated 74 reports in both PDF and Excel formats using JasperSoft.\n• Automated database operations in Oracle using PL/SQL for more than 40\nreports.\n• Created database triggers to execute scheduled logic based on periods.\n• Designed and implemented 50 out of 134 report layouts and userinterfaces\nusing raw HTML, CSS, and JavaScript.\n"
+          }
+      ],
+      "education": [
+          {
+              "id": 1755066480219,
+              "degree": "Bachelor of Engineering",
+              "major": "",
+              "institution": "Muthayammal College of Engineering",
+              "graduationDate": "2024-06",
+              "gpa": "7.75",
+              "branch": "Computer Science"
+          }
+      ],
+      "projects": [
+          {
+              "id": 1755066580146,
+              "projectTitle": "BORNFIRE TEAM MANAGER",
+              "companyName": "BORNFIRE INNOVATIONS PVT. LTD",
+              "startDate": "2025-01",
+              "endDate": "2025-10",
+              "achievements": "Integrated an Event Manager module with dynamic Excel upload and\nform-based input,reducing manual HR workload by 50%.\n• Developed the BGV (Background Verification) tracking module and\nautomated employee onboarding components like Offer Letter, Payslip,\nand Salary Structure PDF generation.\n• Implemented Python-based API integration for automatic biometric\nattendance tracking, syncing real-time data into the HRMS database.\n• Created and scheduled cron jobs for automated email workflows,\nincluding reminders, alerts, and birthday wishes for 50+ employees.\n• Ensured seamless deployment and integration within existing\ninfrastructure, improving HR process efficiency and accuracy."
+          },
+          {
+              "id": 1755083472910,
+              "projectTitle": "Salesmatic - CRM Application ",
+              "companyName": "BORNFIRE INNOVATIONS PVT. LTD",
+              "startDate": "2024-01",
+              "endDate": "2026-02",
+              "achievements": "Handled 100K+ daily transactions by implementing Redis caching and MySQL optimizations, leading to improved system\nscalability.\n• Reduced API response time by 40% by optimizing indexing and partitioning, leading to faster query execution.\n• Enhanced security by implementing JWT token rotation and OAuth2.0, leading to a 20% drop in unauthorized access.\n• Improved sales cycle efficiency by designing a distributed REST API architecture, leading to a 35% reduction in process\ntime.\n"
+          }
+      ],
+      "skills": [
+          "GIT",
+          "Spring Boot",
+          "React.js",
+          "Linux",
+          "Tailwind",
+          "Bootstrap",
+          "Apache Tomcat",
+          "Docker",
+          "SQL (Oracle)",
+          "NoSQL (MongoDB) Python",
+          "HTML",
+          "CSS",
+          "JS",
+          "C ++",
+          ""
+      ],
+      "notifications": {
+          "comments": false,
+          "candidates": false,
+          "offers": false,
+          "pushNotification": "SAME_AS_EMAIL"
+      }
+  }
+}
