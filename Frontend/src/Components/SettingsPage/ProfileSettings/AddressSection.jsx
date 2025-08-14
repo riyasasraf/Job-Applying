@@ -18,7 +18,7 @@ export default function AddressSection({ personalInfo, onChange }) {
             value={personalInfo.country}
             onChange={onChange}
             autoComplete="country-name"
-            className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline outline-1 outline-gray-300 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
+            className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline  outline-gray-500 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
           >
             <option>United States</option>
             <option>Canada</option>
@@ -46,7 +46,7 @@ export default function AddressSection({ personalInfo, onChange }) {
             type="text"
             value={personalInfo.streetAddress}
             onChange={onChange}
-            className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 outline-gray-300 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
+            className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 outline-gray-500 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
           />
         </div>
       </div>
@@ -65,7 +65,7 @@ export default function AddressSection({ personalInfo, onChange }) {
             type="text"
             value={personalInfo.city}
             onChange={onChange}
-            className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 outline-gray-300 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
+            className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 outline-gray-500 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
           />
         </div>
       </div>
@@ -84,7 +84,7 @@ export default function AddressSection({ personalInfo, onChange }) {
             type="text"
             value={personalInfo.region}
             onChange={onChange}
-            className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 outline-gray-300 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
+            className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 outline-gray-500 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
           />
         </div>
       </div>
@@ -103,7 +103,7 @@ export default function AddressSection({ personalInfo, onChange }) {
             type="text"
             value={personalInfo.postalCode}
             onChange={onChange}
-            className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 outline-gray-300 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
+            className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 outline-gray-500 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
           />
         </div>
       </div>

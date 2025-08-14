@@ -19,7 +19,7 @@ export default function BasicInfoSection({ personalInfo, about, onChange }) {
             type="text"
             value={personalInfo.firstName}
             onChange={onChange}
-            className="block w-full rounded-md p-1.5 border-gray-500 shadow-sm sm:text-sm"
+            className="block w-full rounded-md p-1.5 border border-gray-500 shadow-sm sm:text-sm"
           />
         </div>
       </div>
@@ -38,7 +38,7 @@ export default function BasicInfoSection({ personalInfo, about, onChange }) {
             type="text"
             value={personalInfo.lastName}
             onChange={onChange}
-            className="block w-full rounded-md p-1.5 border-gray-500 shadow-sm sm:text-sm"
+            className="block w-full rounded-md p-1.5 border border-gray-500 shadow-sm sm:text-sm"
           />
         </div>
       </div>
@@ -57,7 +57,7 @@ export default function BasicInfoSection({ personalInfo, about, onChange }) {
             type="email"
             value={personalInfo.email}
             onChange={onChange}
-            className="block w-full rounded-md p-1.5 border-gray-500 shadow-sm sm:text-sm"
+            className="block w-full rounded-md p-1.5 border border-gray-500 shadow-sm sm:text-sm"
           />
         </div>
       </div>
@@ -76,7 +76,7 @@ export default function BasicInfoSection({ personalInfo, about, onChange }) {
             type="tel"
             value={personalInfo.phone}
             onChange={onChange}
-            className="block w-full rounded-md p-1.5 border-gray-500 shadow-sm sm:text-sm"
+            className="block w-full rounded-md p-1.5 border border-gray-500 shadow-sm sm:text-sm"
           />
         </div>
       </div>
@@ -96,7 +96,7 @@ export default function BasicInfoSection({ personalInfo, about, onChange }) {
             value={personalInfo.linkedin}
             onChange={onChange}
             placeholder="https://linkedin.com/in/yourprofile"
-            className="block w-full rounded-md p-1.5 border-gray-500 shadow-sm sm:text-sm"
+            className="block w-full rounded-md p-1.5 border border-gray-500 shadow-sm sm:text-sm"
           />
         </div>
       </div>
@@ -116,7 +116,7 @@ export default function BasicInfoSection({ personalInfo, about, onChange }) {
             value={personalInfo.portfolio}
             onChange={onChange}
             placeholder="https://yourportfolio.com"
-            className="block w-full rounded-md p-1.5 border-gray-500 shadow-sm sm:text-sm"
+            className="block w-full rounded-md p-1.5 border border-gray-500 shadow-sm sm:text-sm"
           />
         </div>
       </div>
@@ -135,7 +135,7 @@ export default function BasicInfoSection({ personalInfo, about, onChange }) {
             rows={4}
             value={about}
             onChange={onChange}
-            className="block w-full rounded-md p-1.5 border-gray-500 shadow-sm sm:text-sm"
+            className="block w-full rounded-md p-1.5 border border-gray-500 shadow-sm sm:text-sm"
             placeholder="Write a few sentences about your professional background and goals."
           />
         </div>

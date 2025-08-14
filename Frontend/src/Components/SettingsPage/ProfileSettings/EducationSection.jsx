@@ -34,7 +34,7 @@ export default function EducationSection({
                 name="degree"
                 value={edu.degree}
                 onChange={(e) => onChange(index, e)}
-                className="mt-1 block w-full p-1.5 rounded-md border-gray-300 shadow-sm sm:text-sm"
+                className="mt-1 block w-full p-1.5 rounded-md border border-gray-500 shadow-sm sm:text-sm"
               />
             </div>
 
@@ -47,7 +47,7 @@ export default function EducationSection({
                 name="branch"
                 value={edu.branch}
                 onChange={(e) => onChange(index, e)}
-                className="mt-1 block w-full p-1.5 rounded-md border-gray-300 shadow-sm sm:text-sm"
+                className="mt-1 block w-full p-1.5 rounded-md border border-gray-500 shadow-sm sm:text-sm"
               />
             </div>
 
@@ -60,7 +60,7 @@ export default function EducationSection({
                 name="institution"
                 value={edu.institution}
                 onChange={(e) => onChange(index, e)}
-                className="mt-1 block w-full p-1.5 rounded-md border-gray-300 shadow-sm sm:text-sm"
+                className="mt-1 block w-full p-1.5 rounded-md border border-gray-500 shadow-sm sm:text-sm"
               />
             </div>
 
@@ -73,7 +73,7 @@ export default function EducationSection({
                 name="graduationDate"
                 value={edu.graduationDate}
                 onChange={(e) => onChange(index, e)}
-                className="mt-1 block w-full p-1.5 rounded-md border-gray-300 shadow-sm sm:text-sm"
+                className="mt-1 block w-full p-1.5 rounded-md border border-gray-500 shadow-sm sm:text-sm"
               />
             </div>
 
@@ -86,7 +86,7 @@ export default function EducationSection({
                 name="gpa"
                 value={edu.gpa}
                 onChange={(e) => onChange(index, e)}
-                className="mt-1 block w-full p-1.5 rounded-md border-gray-300 shadow-sm sm:text-sm"
+                className="mt-1 block w-full p-1.5 rounded-md border border-gray-500 shadow-sm sm:text-sm"
                 placeholder="e.g., 3.8/4.0"
               />
             </div>

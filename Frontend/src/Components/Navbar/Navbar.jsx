@@ -9,7 +9,7 @@ import { Link, useLocation } from "react-router-dom";
 import JsonPasteModal from "../Pages/JsonPasteModal"; // We'll create this component
 import { sendJobData } from "../../apis/Jobscrap/jobapis";
 
-export default function Navbar({ setJobData }) {
+export default function Navbar() {
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -23,6 +23,7 @@ export default function Navbar({ setJobData }) {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+    
   };
 
 const handleJsonSubmit = async (jsonData) => {
@@ -32,15 +33,13 @@ const handleJsonSubmit = async (jsonData) => {
     setIsLoading(true);
     // Send data to API
     const apiResponse = await sendJobData(jsonData);
-    // Update local state
-    setJobData(apiResponse);
     // Show success message
     alert(`Successfully sent ${jsonData.length} jobs to API!`);
+    console.log(apiResponse);
   } catch (error) {
     console.error("Failed to send job data:", error);
     alert("Failed to send job data to API. Please try again.");
     // Still update local state even if API fails
-    setJobData(jsonData);
   } finally {
     setIsLoading(false);
     setIsModalOpen(false);

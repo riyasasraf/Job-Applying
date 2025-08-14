@@ -15,7 +15,7 @@ export default function NotificationsSection({ notifications, onChange }) {
                   type="checkbox"
                   checked={notifications[key]}
                   onChange={onChange}
-                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                  className="h-4 w-4 rounded border border-gray-500 text-indigo-600 focus:ring-indigo-600"
                 />
               </div>
               <div className="text-sm leading-6">
@@ -48,7 +48,7 @@ export default function NotificationsSection({ notifications, onChange }) {
                 value={option}
                 checked={notifications.pushNotification === option}
                 onChange={onChange}
-                className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                className="h-4 w-4 border border-gray-500 text-indigo-600 focus:ring-indigo-600"
               />
               <label htmlFor={option} className="block text-sm font-medium text-gray-900">
                 {option.replace(/_/g, " ").toLowerCase().replace(/^\w/, (c) => c.toUpperCase())}

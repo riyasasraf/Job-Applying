@@ -23,7 +23,7 @@ const ContactCardGrid = ({ jobdata }) => {
 
   return jobs.map((job, index) => (
     <Card
-      key={job.job_id || `job-${index}`} // Fixed: use job_id instead of id
+      key={job.jobId || `job-${index}`} // Fixed: use jobId instead of id
       sx={{
         borderRadius: "0.5rem",
         boxShadow:
@@ -70,7 +70,7 @@ const ContactCardGrid = ({ jobdata }) => {
                 textAlign: "center",
               }}
             >
-              {job.company_name}
+              {job.companyName}
             </Typography>
             <Typography
               variant="caption"
@@ -91,7 +91,7 @@ const ContactCardGrid = ({ jobdata }) => {
             </Typography>
           </Box>
           <Avatar
-            alt={`${job.job_title} avatar`}
+            alt={`${job.jobTitle} avatar`}
             src={job.logo || undefined} // Handle missing logo
             sx={{
               width: 48,
@@ -101,7 +101,7 @@ const ContactCardGrid = ({ jobdata }) => {
               backgroundColor: job.logo ? "transparent" : "#6366F1",
             }}
           >
-            {!job.logo && job.company_name ? job.company_name.charAt(0) : "J"}
+            {!job.logo && job.companyName ? job.companyName.charAt(0) : "J"}
           </Avatar>
         </Box>
 
@@ -116,7 +116,7 @@ const ContactCardGrid = ({ jobdata }) => {
             textAlign: "center",
           }}
         >
-          {job.job_title}
+          {job.jobTitle}
         </Typography>
 
         {/* Job ID */}
@@ -130,7 +130,7 @@ const ContactCardGrid = ({ jobdata }) => {
             fontFamily: "monospace",
           }}
         >
-          ID: {job.job_id}
+          ID: {job.jobId}
         </Typography>
 
         {/* Description Preview */}
@@ -204,7 +204,7 @@ const ContactCardGrid = ({ jobdata }) => {
         {/* View Job Link */}
         <Button
           variant="outlined"
-          href={job.url}
+          href={job.jobLink}
           target="_blank"
           rel="noopener noreferrer"
           sx={{

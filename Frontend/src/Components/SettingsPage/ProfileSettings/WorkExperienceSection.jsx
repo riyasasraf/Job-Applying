@@ -33,7 +33,7 @@ export default function WorkExperienceSection({
                 name="jobTitle"
                 value={job.jobTitle}
                 onChange={(e) => onChange(index, e)}
-                className="mt-1 block w-full p-1.5 rounded-md border-gray-300 shadow-sm sm:text-sm"
+                className="mt-1 block w-full p-1.5 rounded-md border border-gray-500 shadow-sm sm:text-sm"
               />
             </div>
             <div className="sm:col-span-3">
@@ -45,7 +45,7 @@ export default function WorkExperienceSection({
                 name="companyName"
                 value={job.companyName}
                 onChange={(e) => onChange(index, e)}
-                className="mt-1 block w-full p-1.5 rounded-md border-gray-300 shadow-sm sm:text-sm"
+                className="mt-1 block w-full p-1.5 rounded-md border border-gray-500 shadow-sm sm:text-sm"
               />
             </div>
             <div className="sm:col-span-3">
@@ -57,7 +57,7 @@ export default function WorkExperienceSection({
                 name="startDate"
                 value={job.startDate}
                 onChange={(e) => onChange(index, e)}
-                className="mt-1 block w-full p-1.5 rounded-md border-gray-300 shadow-sm sm:text-sm"
+                className="mt-1 block w-full p-1.5 rounded-md border border-gray-500 shadow-sm sm:text-sm"
               />
             </div>
             <div className="sm:col-span-3">
@@ -69,7 +69,7 @@ export default function WorkExperienceSection({
                 name="endDate"
                 value={job.endDate}
                 onChange={(e) => onChange(index, e)}
-                className="mt-1 block w-full p-1.5 rounded-md border-gray-300 shadow-sm sm:text-sm"
+                className="mt-1 block w-full p-1.5 rounded-md border border-gray-500 shadow-sm sm:text-sm"
               />
             </div>
             <div className="col-span-full">
@@ -81,7 +81,7 @@ export default function WorkExperienceSection({
                 rows={4}
                 value={job.achievements}
                 onChange={(e) => onChange(index, e)}
-                className="mt-1 block w-full p-1.5 rounded-md border-gray-300 shadow-sm sm:text-sm"
+                className="mt-1 block w-full p-1.5 rounded-md border border-gray-500 shadow-sm sm:text-sm"
               />
             </div>
           </div>

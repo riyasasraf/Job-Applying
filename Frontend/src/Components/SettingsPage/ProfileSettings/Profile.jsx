@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddressSection from "./AddressSection";
 import BasicInfoSection from "./BasicInfoSection";
 import EducationSection from "./EducationSection";
@@ -10,57 +10,119 @@ import ProjectsSection from "./ProjectsSection";
 
 export default function Profile() {
   // Master state for all profile data
-  const [formData, setFormData] = useState({
-    about: "",
-    profilePhoto: null, // For file objects
-    coverPhoto: null, // For file objects
-    personalInfo: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "", // Added phone number
-      linkedin: "", // Added LinkedIn
-      portfolio: "", // Added portfolio/website
-      country: "United States", // Default
-      streetAddress: "",
-      city: "",
-      region: "",
-      postalCode: "",
-    },
-    workExperience: [
-      // Example initial entry
-      {
-        id: Date.now(),
-        title: "",
-        company: "",
-        startDate: "",
-        endDate: "",
-        description: "",
-      },
-    ],
-    education: [
-      // Example initial entry
-      {
-        id: Date.now() + 1,
-        degree: "",
-        major: "",
-        institution: "",
-        graduationDate: "",
-        gpa: "",
-      },
-    ],
-    skills: [], // Array of strings or objects {name: 'React', level: 'Expert'}
-    projects: [], // Array of project objects
-    // ... add more sections as needed based on resume requirements
-    notifications: {
-      email: {
-        comments: true,
-        candidates: false,
-        offers: true,
-      },
-      push: "everything", // "everything", "same-as-email", "nothing"
-    },
+  const LOCAL_STORAGE_KEY = "profile-form-data";
+  const [formData, setFormData] = useState(() => {
+    try {
+      const storedData = localStorage.getItem(LOCAL_STORAGE_KEY);
+      // Return stored data if it exists, otherwise return the default state
+      return storedData
+        ? JSON.parse(storedData)
+        : {
+            about: "",
+            profilePhoto: null,
+            coverPhoto: null,
+            personalInfo: {
+              firstName: "",
+              lastName: "",
+              email: "",
+              phone: "",
+              linkedin: "",
+              portfolio: "",
+              country: "United States",
+              streetAddress: "",
+              city: "",
+              region: "",
+              postalCode: "",
+            },
+            workExperience: [
+              {
+                id: Date.now(),
+                title: "",
+                company: "",
+                startDate: "",
+                endDate: "",
+                description: "",
+              },
+            ],
+            education: [
+              {
+                id: Date.now() + 1,
+                degree: "",
+                major: "",
+                institution: "",
+                graduationDate: "",
+                gpa: "",
+              },
+            ],
+            projects: [],
+            skills: [],
+            notifications: {
+              comments: false,
+              candidates: false,
+              offers: false,
+              pushNotification: "SAME_AS_EMAIL",
+            },
+          };
+    } catch (error) {
+      console.error("Failed to parse data from local storage:", error);
+      return {
+        // Fallback to default state on error
+        about: "",
+        profilePhoto: null,
+        coverPhoto: null,
+        personalInfo: {
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          linkedin: "",
+          portfolio: "",
+          country: "United States",
+          streetAddress: "",
+          city: "",
+          region: "",
+          postalCode: "",
+        },
+        workExperience: [
+          {
+            id: Date.now(),
+            title: "",
+            company: "",
+            startDate: "",
+            endDate: "",
+            description: "",
+          },
+        ],
+        education: [
+          {
+            id: Date.now() + 1,
+            degree: "",
+            major: "",
+            institution: "",
+            graduationDate: "",
+            gpa: "",
+          },
+        ],
+        projects: [],
+        skills: [],
+        notifications: {
+          comments: false,
+          candidates: false,
+          offers: false,
+          pushNotification: "SAME_AS_EMAIL",
+        },
+      };
+    }
   });
+
+  useEffect(() => {
+    // Exclude file objects from being stored in local storage
+    const dataToStore = { ...formData };
+    delete dataToStore.profilePhoto;
+    delete dataToStore.coverPhoto;
+
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(dataToStore));
+  }, [formData]);
 
   // Generic handler for nested state updates
   const handleChange = (e) => {
@@ -156,26 +218,7 @@ export default function Profile() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
-    // Here you would send formData to your Java Spring backend
-    // You'll need to decide how to handle file uploads (e.g., send as FormData, or upload separately)
-
-    // Example fetch to backend:
-    // fetch('/api/save-profile', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json', // Adjust if sending FormData for files
-    //   },
-    //   body: JSON.stringify(formData),
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //   console.log('Success:', data);
-    //   alert('Profile saved successfully!');
-    // })
-    // .catch((error) => {
-    //   console.error('Error:', error);
-    //   alert('Failed to save profile.');
-    // });
+    alert("Profile data saved to local storage!");
   };
 
   const [currentPage, setCurrentPage] = useState(0); // 0-indexed page

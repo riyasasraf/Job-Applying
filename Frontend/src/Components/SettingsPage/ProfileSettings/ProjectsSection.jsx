@@ -30,7 +30,7 @@ export default function ProjectsSection({
                 name="projectTitle"
                 value={project.projectTitle}
                 onChange={(e) => onChange(index, e)}
-                className="mt-1 block w-full p-1.5 rounded-md border-gray-300 shadow-sm sm:text-sm"
+                className="mt-1 block w-full p-1.5 rounded-md border border-gray-500 shadow-sm sm:text-sm"
               />
             </div>
             <div className="sm:col-span-3">
@@ -42,7 +42,7 @@ export default function ProjectsSection({
                 name="companyName"
                 value={project.companyName}
                 onChange={(e) => onChange(index, e)}
-                className="mt-1 block w-full p-1.5 rounded-md border-gray-300 shadow-sm sm:text-sm"
+                className="mt-1 block w-full p-1.5 rounded-md border border-gray-500 shadow-sm sm:text-sm"
               />
             </div>
             <div className="sm:col-span-3">
@@ -54,7 +54,7 @@ export default function ProjectsSection({
                 name="startDate"
                 value={project.startDate}
                 onChange={(e) => onChange(index, e)}
-                className="mt-1 block w-full p-1.5 rounded-md border-gray-300 shadow-sm sm:text-sm"
+                className="mt-1 block w-full p-1.5 rounded-md border border-gray-500 shadow-sm sm:text-sm"
               />
             </div>
             <div className="sm:col-span-3">
@@ -66,7 +66,7 @@ export default function ProjectsSection({
                 name="endDate"
                 value={project.endDate}
                 onChange={(e) => onChange(index, e)}
-                className="mt-1 block w-full p-1.5 rounded-md border-gray-300 shadow-sm sm:text-sm"
+                className="mt-1 block w-full p-1.5 rounded-md border border-gray-500 shadow-sm sm:text-sm"
               />
             </div>
             <div className="col-span-full">
@@ -78,7 +78,7 @@ export default function ProjectsSection({
                 rows={4}
                 value={project.achievements}
                 onChange={(e) => onChange(index, e)}
-                className="mt-1 block w-full p-1.5 rounded-md border-gray-300 shadow-sm sm:text-sm"
+                className="mt-1 block w-full p-1.5 rounded-md border border-gray-500 shadow-sm sm:text-sm"
               />
             </div>
           </div>

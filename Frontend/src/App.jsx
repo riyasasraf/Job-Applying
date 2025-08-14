@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import { Navigate, Route, Routes } from "react-router-dom"; // Import Navigate
 import ListView from "./Components/ListView/ListView";
 import Navbar from "./Components/Navbar/Navbar";
+import Login from "./Components/Pages/Login";
+import Signup from "./Components/Pages/Signup";
+import AppliedJobs from "./Components/SettingsPage/AppliedJobsList/AppliedJobs"; // Path to your AppliedJobs component
 import DashBoard from "./Components/SettingsPage/DashBoard"; // Path to your Dashboard component
 import Profile from "./Components/SettingsPage/ProfileSettings/Profile"; // Path to your Profile component
-import AppliedJobs from "./Components/SettingsPage/AppliedJobsList/AppliedJobs"; // Path to your AppliedJobs component
 import ResumeBuilder from "./Components/SettingsPage/ResumeFormatter/ResumeBuilder"; // Path to your ResumeBuilder component
-import { Route, Routes, Navigate } from "react-router-dom"; // Import Navigate
-import Signup from "./Components/Pages/Signup";
-import Login from "./Components/Pages/Login";
+import { useState } from "react";
 
 const App = () => {
 
-  const [jobdata, setJobData] = useState();
-
+const [reloadJobs, setReloadJobs] = useState(false);
    const issignupOrLogin = ["signup", "login"].some((route) =>
      location.pathname.includes(route)
   );
@@ -20,9 +19,11 @@ const App = () => {
   return (
     <>
       <div className="flex flex-col h-screen">
-        {!issignupOrLogin && <Navbar setJobData={setJobData} />}
+        {!issignupOrLogin && (
+          <Navbar onJobsUpdated={() => setReloadJobs((prev) => !prev)} />
+        )}
         <Routes>
-          <Route path="/" element={<ListView jobdata={ jobdata} />} />
+          <Route path="/" element={<ListView reloadTrigger={reloadJobs} />} />
           <Route path="signup" element={<Signup />} />
           <Route path="login" element={<Login />} />
 
