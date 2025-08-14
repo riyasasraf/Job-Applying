@@ -20,7 +20,7 @@ minio:
   bucket: resumes
   
 gemini:
-  apiKey: 
+  # apiKey: AIzaSyB_DYYyEs4jtE4omCsf4rdBHmsaBYsW3Dg
   endpoint: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent
 
 server:

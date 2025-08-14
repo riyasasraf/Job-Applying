@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -22,9 +23,8 @@ import net.sf.jasperreports.export.SimplePdfExporterConfiguration;
 @Service
 public class GenerateResume {
 
-
     public byte[] generateResume(ResumeData data) throws JRException {
-        // Load the JRXML template from the resources folder
+        // Load JRXML template
         InputStream templateStream = getClass().getResourceAsStream("/resume_template.jrxml");
         if (templateStream == null) {
             throw new RuntimeException("JasperReports template not found.");
@@ -33,13 +33,24 @@ public class GenerateResume {
         // Compile the template
         JasperReport jasperReport = JasperCompileManager.compileReport(templateStream);
 
-        // Create a data source from a list containing the single ResumeData object
-        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(Collections.singletonList(data));
+        // Parameters for subreports or table components
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("resumeData", data); // in case you want direct access to fields
 
-        // Fill the report with data
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, new HashMap<>(), dataSource);
+        // Nested collections
+        parameters.put("educationDataSource", new JRBeanCollectionDataSource(data.getEducation()));
+        parameters.put("experienceDataSource", new JRBeanCollectionDataSource(data.getExperienceAi()));
+        parameters.put("projectDataSource", new JRBeanCollectionDataSource(data.getProjectAi()));
+        parameters.put("skillsDataSource", new JRBeanCollectionDataSource(data.getSkills()));
 
-        // Export the report to PDF and return as a byte array
+        // Main datasource (single ResumeData object)
+        JRBeanCollectionDataSource mainDataSource =
+                new JRBeanCollectionDataSource(Collections.singletonList(data));
+
+        // Fill the report
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, mainDataSource);
+
+        // Export to PDF
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         JRPdfExporter exporter = new JRPdfExporter();
         exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
@@ -51,5 +62,4 @@ public class GenerateResume {
 
         return outputStream.toByteArray();
     }
-
 }

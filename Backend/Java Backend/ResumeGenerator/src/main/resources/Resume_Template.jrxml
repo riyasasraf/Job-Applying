@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 7.0.2.final using JasperReports Library version 6.21.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Resume_Template" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="10" rightMargin="10" topMargin="5" bottomMargin="5" >
+	<parameter name="skillsDataSource" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="projectDataSource" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="experienceDataSource" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="educationDataSource" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="name" class="java.lang.String"/>
+	<field name="role" class="java.lang.String"/>
+	<field name="mail" class="java.lang.String"/>
+	<field name="linkedIn" class="java.lang.String"/>
+	<field name="location" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="51" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="575" height="30" forecolor="#3854F2" />
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="31" width="575" height="20" forecolor="#030303" />
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{role} + " | " + $F{mail}  + " | " +  $F{linkedIn} + " | " + $F{location}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="Reference">
+    <reportElement x="0" y="31" width="575" height="20" forecolor="#030303" />
+    <textElement textAlignment="Center" verticalAlignment="Middle">
+        <font size="10" isBold="false" isUnderline="true"/>
+    </textElement>
+
+    <!-- Display text -->
+    <textFieldExpression><![CDATA["LinkedIn"]]></textFieldExpression>
+
+    <!-- Actual clickable link -->
+    <hyperlinkReferenceExpression><![CDATA[$F{linkedIn}]]></hyperlinkReferenceExpression>
+</textField>
+
+		</band>
+	</title>
+</jasperReport>
