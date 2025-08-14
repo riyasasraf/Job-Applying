@@ -1,6 +1,6 @@
 spring:
   application:
-    name: resumeGenerator
+    name: jobs-service
   config:
     import:
     - optional:configserver:http://localhost:8888

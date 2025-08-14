@@ -3,7 +3,7 @@ spring:
     import:
     - optional:configserver:http://localhost:8888
   datasource:
-    url: jdbc:postgresql://localhost:5432/payment
+    url: jdbc:postgresql://localhost:5432/resumegen
     username: riyas
     password: riyas
     driver-class-name: org.postgresql.Driver
@@ -12,6 +12,16 @@ spring:
       ddl-auto: update
     database: POSTGRESQL
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+minio:
+  url: http://localhost:9000
+  accessKey: admin
+  secretKey: admin123
+  bucket: resumes
+  
+gemini:
+  apiKey: AIzaSyB_DYYyEs4jtE4omCsf4rdBHmsaBYsW3Dg
+  endpoint: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent
 
 server:
   port: 8081

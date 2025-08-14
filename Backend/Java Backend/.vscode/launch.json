@@ -1,0 +1,45 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-ConfigApplication<Config>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.riyas.jobseeker.ConfigApplication",
+      "projectName": "Config",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-JobsApplication<jobs>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.riyas.jobs.JobsApplication",
+      "projectName": "jobs",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env",
+      "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=56559 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=jobs"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-ResumeGeneratorApplication<ResumeGenerator>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.riyas.resumegenerator.ResumeGeneratorApplication",
+      "projectName": "ResumeGenerator",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-DiscoveryApplication<Discovery>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.riyas.jobseeker.DiscoveryApplication",
+      "projectName": "Discovery",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
